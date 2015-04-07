@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+  user:
+  password:
+
+development:
+  <<: *default
+  database: rabbitmq-publisher
+
+test:
+  <<: *default
+  database: reabbitmq-publisher-test
