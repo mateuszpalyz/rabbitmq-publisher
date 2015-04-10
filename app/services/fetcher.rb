@@ -1,7 +1,8 @@
 class Fetcher
 
   def fetch_currencies
-    update_currencies if !Currency.any? || Currency.last.created_at < 1.hour.ago
+    last_currency = Currency.last
+    update_currencies if !last_currency || last_currency.created_at < 1.hour.ago
     Currency.last.rates
   end
 
