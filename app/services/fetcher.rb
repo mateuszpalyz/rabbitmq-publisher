@@ -1,6 +1,6 @@
 class Fetcher
 
-  def fetch_currencies
+  def self.fetch_currencies
     last_currency = Currency.last
     update_currencies if !last_currency || last_currency.created_at < 1.hour.ago
     Currency.last.rates
@@ -8,19 +8,19 @@ class Fetcher
 
   private
 
-  def update_currencies
+  def self.update_currencies
     Currency.create(rates: fetched_rates)
   end
 
-  def fetched_rates
+  def self.fetched_rates
     JSON.parse(response.body)['rates']
   end
 
-  def response
+  def self.response
     Net::HTTP.get_response(URI.parse(url))
   end
 
-  def url
+  def self.url
     "https://openexchangerates.org/api/latest.json?app_id=" + ENV['RATES_SECRET']
   end
 end
