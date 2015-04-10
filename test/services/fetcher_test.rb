@@ -4,6 +4,7 @@ class FetcherTest < ActiveSupport::TestCase
 
   def setup
     @fetcher = Fetcher.new
+    stub_request(:get, "https://openexchangerates.org/api/latest.json?app_id=" + ENV['RATES_SECRET']).to_return response
   end
 
   test "should fetch currencies when db is empty" do
