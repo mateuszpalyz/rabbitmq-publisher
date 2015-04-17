@@ -30,8 +30,8 @@ class FetcherTest < ActiveSupport::TestCase
     end
   end
 
-  test "should return currencies rates hash" do
-    rates = Fetcher.fetch_currencies
-    assert_kind_of Hash, rates
+  test "should return currency" do
+    currency = Fetcher.fetch_currencies
+    assert_kind_of Currency, currency
   end
 end

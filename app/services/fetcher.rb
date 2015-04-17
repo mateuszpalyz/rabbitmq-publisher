@@ -2,13 +2,13 @@ class Fetcher
 
   def self.fetch_currencies
     last_currency = Currency.last
-    !last_currency || last_currency.created_at < 1.hour.ago ? update_currencies : last_currency.rates
+    !last_currency || last_currency.created_at < 1.hour.ago ? update_currencies : last_currency
   end
 
   private
 
   def self.update_currencies
-    Currency.create(rates: fetched_rates).rates
+    Currency.create(rates: fetched_rates)
   end
 
   def self.fetched_rates
