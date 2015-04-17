@@ -14,6 +14,7 @@ gem 'bunny'
 group :test do
   gem 'timecop'
   gem 'webmock'
+  gem 'mocha'
 end
 
 group :development, :test do
