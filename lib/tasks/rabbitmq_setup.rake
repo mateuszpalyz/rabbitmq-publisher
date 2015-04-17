@@ -7,7 +7,7 @@ namespace :rabbitmq do
     exchange_fanout = channel.fanout('currencies.fanout')
     exchange_direct = channel.direct('currencies.direct')
 
-    (1..3).each { |i| channel.queue("currencies.queue)#{i}").bind(exchange_fanout) }
+    (1..3).each { |i| channel.queue("currencies.queue_#{i}").bind(exchange_fanout) }
     channel.queue('currencies.acknowledgements')
       .bind(exchange_direct, routing_key: 'acknowledgements')
 
