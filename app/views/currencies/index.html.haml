@@ -1,0 +1,20 @@
+.panel.panel-success.rabbit-table
+  .panel-heading
+    %h4 Rabbitmq Publisher Stats
+  %table.table
+    %tr
+      %th UUID
+      %th Date
+      %th Ack1
+      %th Ack2
+      %th Ack3
+    - @currencies.each do |currency|
+      %tr
+        %td= currency.uuid
+        %td= currency.created_at
+        - (1..3).each do |n|
+          %td
+            - if currency.send("ack#{n}")
+              %i.glyphicon.glyphicon-ok
+            - else
+              %i.glyphicon.glyphicon-remove
