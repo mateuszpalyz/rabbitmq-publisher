@@ -12,9 +12,6 @@
       %tr
         %td= currency.uuid
         %td= currency.created_at
-        - (1..3).each do |n|
-          %td
-            - if currency.send("ack#{n}")
-              %i.glyphicon.glyphicon-ok
-            - else
-              %i.glyphicon.glyphicon-remove
+        %td= boolean_icon currency.ack1
+        %td= boolean_icon currency.ack2
+        %td= boolean_icon currency.ack3
