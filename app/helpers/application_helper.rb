@@ -1,6 +1,8 @@
 module ApplicationHelper
 
-  def boolean_icon(value)
-    value ? '<i class="glyphicon glyphicon-ok"></i>'.html_safe : '<i class="glyphicon glyphicon-remove"></i>'.html_safe
+  def ack_status_icon(value)
+    begin
+      value ? '<i class="glyphicon glyphicon-ok"></i>' : '<i class="glyphicon glyphicon-remove"></i>'
+    end.html_safe
   end
 end
